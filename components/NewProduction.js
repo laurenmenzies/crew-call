@@ -16,7 +16,7 @@ export default function CreateProduction() {
                 />
             </View>
             <View> 
-                <Text>Team Members</Text>
+                <Text>Crew Members</Text>
                 <TextInput
                     style={{
                         height:30,
