@@ -1,38 +1,13 @@
-// import { StatusBar } from 'expo-status-bar';
-// import React from 'react';
-// import { NavigationContainer } from 'react-native';
-// import { createStackNavigator } from '@react-navigation/stack';
-
-// const Stack = createStackNavigator();
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//           name="Home"
-//           name="Login"
-//           name="NewProduction"
-//           name="Production"
-//           component={Home}
-//         />
-//         <Stack.Screen name="Profile" component={Profile} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
 import React from 'react';
-import { Text, View, Button, TextInput, StatusBar } from 'react-native';
+import { Text, View, Button } from 'react-native';
 
-export default function App() {
+export default function Login() {
 
 
     const [value, onChangeText] = React.useState('username');
 
     return (
-      // <View style={styles.container}>
-        <View>
+      <View style={styles.container}>
         <Text>CREW CALL</Text>
         <View>
             <Text>Production Login</Text>
@@ -57,8 +32,8 @@ export default function App() {
                 navigation.navigate("NewProduction")
             }
           />
-      <StatusBar style="auto" /> 
+        <StatusBar style="auto" />
       </View>
     );
   }
-  
+  w

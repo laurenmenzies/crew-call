@@ -1,36 +1,61 @@
 import React, { useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 
-export default function ProductionPage() {
-    constructor () {
+    
+function Item({ title }) {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    );
+  }
+
+export default class ProductionPage extends Component() {
+    constructor(props) {
         super()
         this.state = {
             tasks: []
         }
-        this.addTask = this.addTask.bind(this);
-        this.completeTaks = this.completeTask.bind(this);
+        this.onChangeText = this.onChangeText.bind(this);
+        this.readTasks = this.readTasks.bind(this);
     }
 
-    addTask (newTask) {
-        const {data} = await axios.post('/apo/production', newTask)
+    onChangeText (text){
+        let newTask = {name: text}
+        const {data} = await axios.post('/api/production', newTask)
         this.setState({tasks: [...this.state.tasks, data]})
     }
 
-    completeTask(taksId) {
-        // stylize taks with a line through it
+    // read all the tasks from the database, 
+    readTasks () {
+        await axios.get('/api/production')
     }
 
-    return (
-        <View> 
-            <Text>Production Name</Text>
-            <View>
-                Production Members
-            </View>
+    // stylize taks with a line through it
+    completeTask(taksId) {
+
+    }
+
+    render() {
+        return (
             <View> 
-                <CreateTask addTask={this.addTask} />
-                {this.state.tasks}
+                <Text>Production Name</Text>
+                <View>
+                    Production Members
+                </View>
+                <TextInput
+                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                    onChangeText={text => onChangeText(text)}
+                    value={value}
+                />
+                <View>
+                <FlatList
+                    data={this.state.tasks}
+                    renderItem={({ task }) => <Item name={task.name} />}
+                    keyExtractor={task => task.id}
+                />
+                </View>
             </View>
-            
-        </View>
-    )
+        )
+    }
 }

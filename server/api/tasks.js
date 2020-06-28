@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const taks = await Task.creat(req.body);
+        const task = await Task.create(req.body);
         res.send(task);
     }
     catch (err) {

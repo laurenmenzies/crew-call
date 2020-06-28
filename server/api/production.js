@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Team } = require('../db/models');
+const { Production } = require('../db/models');
 
 router.get('/', async (req, res, next) => {
     try {
-        const teams = await Team.findAll();
-        res.send(teams)
+        const productions = await Production.findByPk();
+        res.send(productions)
     } catch (err) {
         next(err);
     }
